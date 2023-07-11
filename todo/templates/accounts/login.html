@@ -1,0 +1,43 @@
+{% extends 'todoapp/base.html' %}
+{% block 'main' %}
+
+<div class="row">
+    <div class="col-md-4 my-5 mx-auto shadow p-4">
+        {% if errmsg %}
+        <div class="alert alert-danger">
+            {{ errmsg }}
+        </div>
+        {% endif %}
+
+        <h4 align="center" class="my-4">User Login</h4>
+        <hr>
+        <form method="POST" action="/login">
+            {% csrf_token %}
+            <!-- Username  -->
+            <div class="mb-3 ">
+                <label for="Input1" class="form-label"><strong>Username:</strong> </label>
+                <input name="uname" type="email" class="form-control" id="Input1" placeholder="Enter Email Address">
+            </div>
+            <!-- password  -->
+            <div class="mb-3">
+                <label for="Input2" class="form-label"><strong>Password:</strong> </label>
+                <input name="upass" type="password" class="form-control" id="Input2" placeholder="Enter Your Password">
+            </div>
+
+            <div class="mb-3 text-center ">
+                <input type="submit" value="Login" class="btn btn-danger">
+            </div>
+            <div class="text-center">
+                Not register ? &nbsp;&nbsp;<a href="/register" style="text-decoration: none;">Register</a>
+            </div>
+
+            {% if success %}
+            <div class="alert alert-success">
+                {{success}}
+            </div>
+            {% endif %}
+
+        </form>
+    </div>
+</div>
+{% endblock 'main' %}

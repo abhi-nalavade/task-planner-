@@ -1,0 +1,77 @@
+{% extends 'todoapp\base.html' %}
+{% block 'main' %}
+
+    <div class="row">
+              <div class="col-md-12 ">
+                    <h1 class="text-bg-primary p-1 mt-4 text-center">Task Planner</h1>
+              </div><!-- heading end-->
+
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="text-bg-primary p-2 text-center mt-4">Add Task</h3>
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="first" class="form-label"><strong>Task Name</strong></label>
+                <input type="text" name="tname" class="form-control" id="first" placeholder="Enter Task Name">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="second" class="form-label"><strong>Enter Task Details</strong></label>
+                    <textarea class="form-control" name="tdetails" id="second" rows="3"></textarea>
+                  </div>
+
+                  <div class="mb-3">
+                     <select class="form-select" name="cat" aria-label="Default select example">
+                        <option>Select Categeory</option>
+                        <option value="1">Office</option>
+                        <option value="2">Personal</option>
+                        
+                      </select>
+                        
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" value="0" name="status" id="ongoing" checked>
+                    <label class="form-check-label" for="ongoing">
+                      Ongoing
+                    </label>
+                  </div>
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" value="1" name="status" id="completed">
+                    <label class="form-check-label" for="completed">
+                      Completed
+                    </label>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="fifth" class="form-label"><strong>Due Date</strong></label>
+                <input type="date" name="duedate" class="form-control" id="fifth">
+                  </div>
+
+                  <div class="mb-3">
+                         <input type="submit" value="Create" class="btn btn-danger">
+                  </div>
+            </form>
+        </div> <!--form end-->
+
+        <div class="col-md-8">
+            <h3 class="text-bg-primary p-2 text-center mt-4">Task List</h3>
+
+            <table class="table table-bordered">
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Task Name</th>
+                            <th>TAsk Details</th>
+                            <th>Categeory</th>
+                            <th>status</th>
+                            <th>End Date</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+
+            </table>
+        </div> <!--table end-->
+    </div>
+
+{% endblock 'main' %}
